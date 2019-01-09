@@ -69,8 +69,16 @@ function showevents(branch) {
 
 
 function showdetails(event) {
-    localStorage.setItem('event-selector', event);
-    document.location = "../details"
 
+    localStorage.setItem('event-selector', event);
+    if(event == "Make-a-Ton"){
+        document.location = "../../make-a-ton"
+    }
+    if(event == "CodeStorm"){
+        document.location = "../../codestorm"
+    }
+    else {
+        document.location = "../details"
+    }
 
 }

@@ -79,7 +79,7 @@ function loguser() {
     var email = document.getElementById("emailin").value;
     var password = document.getElementById("passwordin").value;
     firebase.auth().signInWithEmailAndPassword(email, password).then(function () {
-        window.location = "index.html"
+        window.location = "../index.html"
     }).catch(function (error) {
 
         var errorCode = error.code;
