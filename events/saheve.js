@@ -52,6 +52,10 @@ function putindiv() {
             });
         });
         box.appendChild(branches);
+    }).then(function () {
+        load = document.getElementById("loading")
+        load.parentNode.removeChild(load);
+
     })
     ;
 
