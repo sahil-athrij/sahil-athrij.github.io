@@ -58,7 +58,7 @@
       <file leaf-file-name="eve-details.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/events/details/eve-details.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
+            <state relative-caret-position="969">
               <caret line="72" column="38" selection-start-line="72" selection-start-column="38" selection-end-line="72" selection-end-column="38" />
             </state>
           </provider>
@@ -133,7 +133,7 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="65" />
+    <option name="x" value="306" />
     <option name="y" value="-8" />
     <option name="width" value="1037" />
     <option name="height" value="550" />
@@ -229,12 +229,12 @@
       <workItem from="1547038946651" duration="1931000" />
       <workItem from="1547041785823" duration="9094000" />
       <workItem from="1547172967849" duration="1283000" />
-      <workItem from="1547259066948" duration="874000" />
+      <workItem from="1547259066948" duration="1472000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13182000" />
+    <option name="totallyTimeSpent" value="13780000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -465,7 +465,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/events/details/eve-details.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
+        <state relative-caret-position="969">
           <caret line="72" column="38" selection-start-line="72" selection-start-column="38" selection-end-line="72" selection-end-column="38" />
         </state>
       </provider>
