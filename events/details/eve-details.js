@@ -70,7 +70,7 @@ function pay() {
         if (user) {
             firebase.database().ref('/events/' + branch + '/' + event).once('value').then(function (snapshot) {
                 eve = snapshot.val();
-                insta_link = eve.instamojo;
+                insta_link = eve.insta;
                 insta_link += "?data_name=";
                 uuid = user.uid;
                 insta_link += uuid;
