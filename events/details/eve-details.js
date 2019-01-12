@@ -69,8 +69,6 @@ function showdetails(branch, event) {
 function pay() {
     firebase.auth().onAuthStateChanged(function (user) {
 
-        branch = localStorage.getItem("branch-selector");//when making full website makse sure to get this from the branch tab
-        event = localStorage.getItem("event-selector"); //when making full website make sure to get this from the event card
         if (user) {
             firebase.database().ref('/events/' + branch + '/' + event).once('value').then(function (snapshot) {
                 eve = snapshot.val();
