@@ -62,6 +62,10 @@ function showevents(branch) {
         });
 
         box.appendChild(branches);
+    }).then(function () {
+        load = document.getElementById("loading")
+        load.parentNode.removeChild(load);
+
     });
 
 }

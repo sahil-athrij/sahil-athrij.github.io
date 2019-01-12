@@ -12,10 +12,15 @@ button{
     border-color: black;
 }
 #org1-img{
-    width: 10vw;
+    width: 20vw;
     border-radius: 100%;
 }
 #org2-img{
-    width: 10vw;
+    width: 20vw;
     border-radius: 100%;
+}
+#loading{
+    margin-top: 20vw;
+    margin-left: 43vw;
+
 }

@@ -8,6 +8,9 @@ var config = {
 };
 firebase.initializeApp(config);
 
+
+
+
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         uid = user.uid;
@@ -16,6 +19,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         database.once('value', function (snap) {
             username.innerText = "Hi " + snap.val().name;
         });
+
         var table = document.querySelector('#usertable tbody');
         var events = firebase.database().ref().child('users/' + uid + '/events');
         events.on('value', function (snap) {
@@ -33,11 +37,20 @@ firebase.auth().onAuthStateChanged(function (user) {
 
 
             })
-        });
+
+
+
+        })
+
     }
     else {
         document.location = "../signup"
     }
+}).then(function () {
+    load = document.getElementById("loading");
+    console.log(load);
+    load.parentNode.removeChild(load);
+
 });
 
 function signout() {

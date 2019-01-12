@@ -33,18 +33,18 @@ function showdetails(branch, event) {
 
 
         storage.ref('events/' + branch + "/" + event + "/cr1.jpg").getDownloadURL().then(function (url) {
-        // `url` is the download URL for 'images/stars.jpg'
+            // `url` is the download URL for 'images/stars.jpg'
 
-        // This can be downloaded directly:
+            // This can be downloaded directly:
 
-        // Or inserted into an <img> element:
-        console.log(url);
-        var org = document.getElementById('org1-img');
-        org.src = url;
-    }).catch(function (error) {
-        console.log(error)
-        // Handle any errors
-    });
+            // Or inserted into an <img> element:
+            console.log(url);
+            var org = document.getElementById('org1-img');
+            org.src = url;
+        }).catch(function (error) {
+            console.log(error)
+            // Handle any errors
+        });
         storage.ref('events/' + branch + "/" + event + "/crd2.jpg").getDownloadURL().then(function (url) {
             // `url` is the download URL for 'images/stars.jpg'
 
@@ -58,7 +58,11 @@ function showdetails(branch, event) {
             console.log(error)
             // Handle any errors
         });
-})
+    }).then(function () {
+        load = document.getElementById("loading")
+        load.parentNode.removeChild(load);
+
+    });
 
 }
 
