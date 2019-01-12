@@ -14,6 +14,8 @@ firebase.initializeApp(config);
 // Clear the localStorage
 
 
+
+
 function showevents(branch) {
     box = document.getElementsByClassName("container")[0];
     branches = document.createElement("div");
@@ -25,16 +27,13 @@ function showevents(branch) {
 
     database.once('value', function (snap) {
         snap.forEach(function (snapshot) {
-            var div = document.createElement('div');
+            var div = document.createElement('a');
             div.setAttribute("class", "col-lg-4 ind-events col-xs-12 ");
 
 
             div.id = snapshot.key;
 
-            div.innerHTML = "<p>" + snapshot.key + "</p>";
-
-
-            div.setAttribute("onclick", "showdetails('" + snapshot.key + "');");
+            div.setAttribute("href", "../details/?branch="+branch+"&event="+snapshot.key);
 
             branches.appendChild(div);
             number += 1;
@@ -68,17 +67,3 @@ function showevents(branch) {
 }
 
 
-function showdetails(event) {
-
-    localStorage.setItem('event-selector', event);
-    if(event == "Make-a-Ton"){
-        document.location = "../../make-a-ton"
-    }
-    if(event == "CodeStorm"){
-        document.location = "../../codestorm"
-    }
-    else {
-        document.location = "../details"
-    }
-
-}

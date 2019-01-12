@@ -121,9 +121,18 @@
 </div>
 </div>
 <script>
-    branch = localStorage.getItem("branch-selector");
-
-    event = localStorage.getItem("event-selector");
+    const urlParams = new URLSearchParams(window.location.search);
+    const branch = urlParams.get('branch');
+    const event = urlParams.get('event');
+    if(event === "Make-a-Ton"){
+        document.location = "../../make-a-ton"
+    }
+    else if(event === "CodeStorm"){
+        document.location = "../../codestorm"
+    }
+    else if(event === "15 days of hack"){
+        document.location = "../../15days-of-hack"
+    }
 
     showdetails(branch,event);
 </script>

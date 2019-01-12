@@ -12,6 +12,7 @@ function putindiv() {
     box = document.getElementsByClassName("container")[0];
     branches = document.createElement("div");
     branches.setAttribute("class", "row sec-container");
+    tp = document.getElementById("event1");
 
     var database = firebase.database().ref().child('events/');
     number = 0;
@@ -20,23 +21,31 @@ function putindiv() {
 
     database.once('value', function (snap) {
         snap.forEach(function (snapshot) {
-            var div = document.createElement('div');
+            var div = document.createElement('a');
             div.setAttribute("class", "col-lg-4 ind-events col-xs-12 ");
 
 
             div.id = snapshot.key;
-            div.setAttribute("onclick", "showevents('" + snapshot.key + "');");
+            div.setAttribute("href", "branch/?branch="+snapshot.key);
 
-            branches.appendChild(div);
-            number += 1;
-            if (number === 3) {
-                number = 0;
-                box.appendChild(branches);
-                branches = document.createElement("div");
-                branches.setAttribute("class", "row sec-container");
+
+
+            if(snapshot.key === "co" || snapshot.key === "pre" || snapshot.key === "ws"){
+                tp.appendChild(div)
 
             }
 
+            else {
+                number += 1;
+                branches.appendChild(div);
+                if (number === 3) {
+                    number = 0;
+                    box.appendChild(branches);
+                    branches = document.createElement("div");
+                    branches.setAttribute("class", "row sec-container");
+
+                }
+            }
             storage.ref('events/' + snapshot.key + "/branch.svg").getDownloadURL().then(function (url) {
                 // `url` is the download URL for 'images/stars.jpg'
 
@@ -44,6 +53,7 @@ function putindiv() {
 
                 // Or inserted into an <img> element:
                 var im = document.createElement('img');
+                im.setAttribute("href", "/branch/?branch="+snapshot.key);
                 im.src = url;
                 div.appendChild(im)
             }).catch(function (error) {
@@ -58,13 +68,5 @@ function putindiv() {
 
     })
     ;
-
-}
-
-
-function showevents(branch) {
-    localStorage.setItem('branch-selector', branch);
-    document.location = "branch"
-
 
 }

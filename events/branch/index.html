@@ -71,7 +71,8 @@
 
 </div>
 <script>
-    branch = localStorage.getItem("branch-selector");
+    const urlParams = new URLSearchParams(window.location.search);
+    const branch = urlParams.get('branch');
     showevents(branch);
 
 
