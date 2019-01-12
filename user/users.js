@@ -22,11 +22,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 
         var table = document.querySelector('#usertable tbody');
         var events = firebase.database().ref().child('users/' + uid + '/events');
-        events.on('value', function (snap) {
-            while (table.hasChildNodes()) {
-                table.removeChild(table.firstChild);
-            }
-
+        events.once('value', function (snap) {
             snap.forEach(function (snapshot) {
                 var eve = snapshot.val();
                 var row = table.insertRow(-1);
@@ -40,18 +36,18 @@ firebase.auth().onAuthStateChanged(function (user) {
 
 
 
-        })
+        }).then(function () {
+            load = document.getElementById("loading");
+            console.log(load);
+            load.parentNode.removeChild(load);
+
+        });
 
     }
     else {
         document.location = "../signup"
     }
-}).then(function () {
-    load = document.getElementById("loading");
-    console.log(load);
-    load.parentNode.removeChild(load);
-
-});
+})
 
 function signout() {
     firebase.auth().signOut().then(function() {
