@@ -23,18 +23,12 @@ function putindiv() {
         snap.forEach(function (snapshot) {
             var div = document.createElement('a');
             div.setAttribute("class", "col-lg-4 ind-events col-xs-12 ");
-
-
             div.id = snapshot.key;
             div.setAttribute("href", "branch/?branch="+snapshot.key);
 
-
-
             if(snapshot.key === "co" || snapshot.key === "pre" || snapshot.key === "ws"){
                 tp.appendChild(div)
-
             }
-
             else {
                 number += 1;
                 branches.appendChild(div);
@@ -46,20 +40,27 @@ function putindiv() {
 
                 }
             }
-            storage.ref('events/' + snapshot.key + "/branch.svg").getDownloadURL().then(function (url) {
-                // `url` is the download URL for 'images/stars.jpg'
-
-                // This can be downloaded directly:
-
-                // Or inserted into an <img> element:
-                var im = document.createElement('img');
-                im.setAttribute("href", "/branch/?branch="+snapshot.key);
-                im.src = url;
-                div.appendChild(im)
-            }).catch(function (error) {
-                console.log(error)
-                // Handle any errors
-            });
+            var im = document.createElement('img');
+            im.setAttribute("href", "/branch/?branch="+snapshot.key);
+            img = localStorage.getItem(snapshot.key);
+            console.log(img);
+            if(img){
+                im.src = img;
+            }
+            else {
+                storage.ref('events/' + snapshot.key + "/branch.svg").getDownloadURL().then(function (url) {
+                    // `url` is the download URL for 'images/stars.jpg'
+                    // This can be downloaded directly:
+                    // Or inserted into an <img> element:
+                    console.log("hello");
+                    im.src = url;
+                    localStorage.setItem(snapshot.key, url);
+                }).catch(function (error) {
+                    console.log(error)
+                    // Handle any errors
+                });
+            }
+            div.appendChild(im)
         });
         box.appendChild(branches);
     }).then(function () {
