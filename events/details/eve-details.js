@@ -29,7 +29,11 @@ function showdetails(branch, event) {
         op1.innerHTML = snap.val().coordinators.crd1.number;
         on2.innerHTML = snap.val().coordinators.crd2.name;
         op2.innerHTML = snap.val().coordinators.crd2.number;
-
+        insta_link = snap.val().insta;
+        if (!insta_link){
+            reg = document.getElementById("registerbtn");
+            reg.parentNode.removeChild(reg);
+        }
         storage.ref('events/' + branch + "/" + event + "/cr1.jpg").getDownloadURL().then(function (url) {
             // `url` is the download URL for 'images/stars.jpg'
 
@@ -61,6 +65,7 @@ function showdetails(branch, event) {
         load.parentNode.removeChild(load);
 
     });
+
 
 }
 
