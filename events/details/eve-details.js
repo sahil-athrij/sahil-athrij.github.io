@@ -18,7 +18,6 @@ function showdetails(branch, event) {
     var op1 = document.getElementById('org1-ph');
     var on2 = document.getElementById('org2-name');
     var op2 = document.getElementById('org2-ph');
-
     var storage = firebase.storage();
     database.once('value', function (snap) {
         document.getElementById('eve-name').innerHTML = event;
@@ -30,7 +29,6 @@ function showdetails(branch, event) {
         op1.innerHTML = snap.val().coordinators.crd1.number;
         on2.innerHTML = snap.val().coordinators.crd2.name;
         op2.innerHTML = snap.val().coordinators.crd2.number;
-
 
         storage.ref('events/' + branch + "/" + event + "/cr1.jpg").getDownloadURL().then(function (url) {
             // `url` is the download URL for 'images/stars.jpg'
@@ -68,22 +66,28 @@ function showdetails(branch, event) {
 
 function pay() {
     firebase.auth().onAuthStateChanged(function (user) {
+        // if (user) {
+        //     firebase.database().ref('/events/' + branch + '/' + event).once('value').then(function (snapshot) {
+        //         eve = snapshot.val();
+        //         insta_link = eve.insta;
+        //         insta_link += "?data_name=";
+        //         uuid = user.uid;
+        //         insta_link += uuid;
+        //         insta_link += "&data_readonly=data_name";
+        //         document.location = insta_link;
+        //
+        //
+        //     });
+        // }
+        // else {
+        //     document.location = "../../signup"
+        // }
+        firebase.database().ref('/events/' + branch + '/' + event).once('value').then(function (snapshot) {
+            eve = snapshot.val();
+            insta_link = eve.insta;
+            console.log(insta_link)
+            document.location = insta_link;
 
-        if (user) {
-            firebase.database().ref('/events/' + branch + '/' + event).once('value').then(function (snapshot) {
-                eve = snapshot.val();
-                insta_link = eve.insta;
-                insta_link += "?data_name=";
-                uuid = user.uid;
-                insta_link += uuid;
-                insta_link += "&data_readonly=data_name";
-                document.location = insta_link;
-
-
-            });
-        }
-        else {
-            document.location = "../../signup"
-        }
+        });
     });
 }

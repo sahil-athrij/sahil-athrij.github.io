@@ -29,7 +29,7 @@ function putindiv() {
             if(snapshot.key === "co" || snapshot.key === "pre" || snapshot.key === "ws"){
                 tp.appendChild(div)
             }
-            else {
+            else if (snapshot.key==="acc"){ //edit this for full events
                 number += 1;
                 branches.appendChild(div);
                 if (number === 3) {

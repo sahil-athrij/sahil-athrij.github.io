@@ -14,8 +14,6 @@ firebase.initializeApp(config);
 // Clear the localStorage
 
 
-
-
 function showevents(branch) {
     box = document.getElementsByClassName("container")[0];
     branches = document.createElement("div");
