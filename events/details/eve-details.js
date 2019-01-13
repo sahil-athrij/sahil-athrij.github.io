@@ -33,6 +33,7 @@ function showdetails(branch, event) {
         if (!insta_link){
             reg = document.getElementById("registerbtn");
             reg.parentNode.removeChild(reg);
+            fee.parentNode.removeChild(fee);
         }
         storage.ref('events/' + branch + "/" + event + "/cr1.jpg").getDownloadURL().then(function (url) {
             // `url` is the download URL for 'images/stars.jpg'
