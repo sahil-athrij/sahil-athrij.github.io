@@ -34,15 +34,16 @@ function showevents(branch) {
             div.id = snapshot.key;
 
             div.setAttribute("href", "../details/?branch="+branch+"&event="+snapshot.key);
+            if(snapshot.val().registration==="open") {
+                branches.appendChild(div);
+                number += 1;
+                if (number === 3) {
+                    number = 0;
+                    box.appendChild(branches);
+                    branches = document.createElement("div");
+                    branches.setAttribute("class", "row sec-container");
 
-            branches.appendChild(div);
-            number += 1;
-            if (number === 3) {
-                number = 0;
-                box.appendChild(branches);
-                branches = document.createElement("div");
-                branches.setAttribute("class", "row sec-container");
-
+                }
             }
 
             storage.ref('events/' + branch +"/"+snapshot.key + "/event.svg").getDownloadURL().then(function (url) {
