@@ -117,9 +117,17 @@ function addpayment(eve,user) {
         });
     }
 }
+function changelocataion(){
+    localStorage.setItem("branch",branch);
+    localStorage.setItem("event",event);
+    document.location = "../../signup"
+
+}
 function pay() {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
+            redirect= document.getElementById("redirect");
+            redirect.parentNode.removeChild(redirect);
             var sn = localStorage.getItem("events");
             sn = JSON.parse(sn);
             if(sn){
@@ -132,9 +140,7 @@ function pay() {
             }
         }
         else {
-            localStorage.setItem("branch",branch);
-            localStorage.setItem("event",event);
-            document.location = "../../signup"
+
         }
 
     });
