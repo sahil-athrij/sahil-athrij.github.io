@@ -132,6 +132,8 @@ function pay() {
             }
         }
         else {
+            localStorage.setItem("branch",branch);
+            localStorage.setItem("event",event);
             document.location = "../../signup"
         }
 
