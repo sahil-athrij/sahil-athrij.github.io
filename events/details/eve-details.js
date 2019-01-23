@@ -97,11 +97,12 @@ function add_details(snapshot,insta_link) {
 function addpayment(eve,user) {
     insta_link = eve.insta;
     field= eve.insta_uid;
-    insta_link += "?data_"+field+"=";
-    uuid = user.uid;
-    insta_link += uuid;
-    insta_link += "&data_readonly=data_"+field;
-
+    if(field) {
+        insta_link += "?data_" + field + "=";
+        uuid = user.uid;
+        insta_link += uuid;
+        insta_link += "&data_readonly=data_" + field;
+    }
     var us = localStorage.getItem("user");
     us = JSON.parse(us);
     if(us){
