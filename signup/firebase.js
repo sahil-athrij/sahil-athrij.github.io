@@ -48,7 +48,7 @@ function createuser() {
             }).then(function () {
                 // write what happens after registration is compete
                 alert("registration succesfull");
-                // document.location = "../"
+                document.location = "../user"
 
 
             });
@@ -123,7 +123,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         user.providerData.forEach(function (profile) {
             console.log(profile.email)
         })
-        // document.location = "../"
+        document.location = "../user"
     }
 
     else {
