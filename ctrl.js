@@ -65,7 +65,9 @@ function submituser() {
 
 
     reg.update(jso);
-    user.update(jsu)
+    user.update(jsu).catch(function (error ) {
+        alert(error.message)
+    })
 
 
 }
@@ -83,17 +85,20 @@ function login() {
     firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
         var errorCode = error.code;
         var errorMessage = error.message;
+        alert("You do not have the neccesary permissions to do this.")
     });
 
 }
 
 function check(mail){
-    if (/^\w+([\.-]?\w+)*@gmail.com+$/.test(mail))
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
     {
         return (true)
     }
-    alert("You have entered an invalid email address!")
-    return (false)
+    else {
+        alert("You have entered an invalid email address!")
+        return (false)
+    }
 }
 function resetuser() {
     number =0;
