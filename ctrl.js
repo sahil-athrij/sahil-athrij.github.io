@@ -82,7 +82,9 @@ function login() {
         return
     }
     var password = document.getElementById("password").value;
-    firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
+    firebase.auth().signInWithEmailAndPassword(email, password).then(function () {
+        alert("logged in.");
+    }).catch(function (error) {
         var errorCode = error.code;
         var errorMessage = error.message;
         alert("You do not have the neccesary permissions to do this.")
