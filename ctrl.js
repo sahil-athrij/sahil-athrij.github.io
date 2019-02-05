@@ -56,7 +56,7 @@ function submituser() {
             alert("email is wrong ")
             return
         }
-        jso[us] = "paid";
+        jso[us] = "attended";
         jsu[us] = {
             name:us,
             email:em
